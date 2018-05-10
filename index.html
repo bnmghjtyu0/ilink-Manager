@@ -6,77 +6,205 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <!-- Material -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <style>
+        .demo-card-wide.mdl-card {
+            width: 512px;
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
-        <input type="text" placeholder="請輸入標題" v-model="firebaseData.msg">
-        <br>
-        <textarea name="" id="" cols="30" rows="10" v-model="firebaseData.content"></textarea>
-        <br>
-        <button type="primary" @click="writeFirebase()">傳送到 firebase</button>
-
-        <ul>
-            <li v-for="(item,i) in firebaseData.list">
-                {{item.message}}
-                <button @click="removeFirebase(i)">移除項目</button>
-            </li>
-        </ul>
-
-        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-            <thead>
-                <tr>
-                    <th class="mdl-data-table__cell--non-numeric">標籤</th>
-                    <th>專案</th>
-                    <th>單號</th>
-                    <th>功能項目</th>
-                    <th>子項目</th>
-                    <th>問題描述</th>
-                    <th>負責工程師</th>
-                    <th>處理日期</th>
-                    <th>交付期限</th>
-                    <th>更新日期</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-                    <td>{{firebaseData.projectName}}</td>
-                    <td>$2.90</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-
-            </tbody>
-        </table>
-
-        <button type="button" class="mdl-button show-modal" @click="showModal">Show Modal</button>
-        <dialog ref="mdl_dialog" class="mdl-dialog">
-            <div class="mdl-dialog__content">
-                <p>
-                    Allow this site to collect usage data to improve your experience?
-                </p>
+        <!-- Always shows a header, even in smaller screens. -->
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">專案流程管理</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation. We hide it in small screens. -->
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                    </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">Title</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                </nav>
             </div>
-            <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-                <button type="button" class="mdl-button" @click="closeModal()">Disagree</button>
-            </div>
-        </dialog>
+            <main class="mdl-layout__content">
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col">
+                            <div class="demo-card-wide mdl-card mdl-shadow--2dp w-100">
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text">Welcome</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
+                                </div>
+                                <div class="mdl-card__actions mdl-card--border">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                        已完成的專案
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="demo-card-wide mdl-card mdl-shadow--2dp w-100">
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text">Welcome</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
+                                </div>
+                                <div class="mdl-card__actions mdl-card--border">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                        已完成的專案
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="demo-card-wide mdl-card mdl-shadow--2dp w-100">
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text">Welcome</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
+                                </div>
+                                <div class="mdl-card__actions mdl-card--border">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                        已完成的專案
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="demo-card-wide mdl-card mdl-shadow--2dp w-100">
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text">Welcome</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
+                                </div>
+                                <div class="mdl-card__actions mdl-card--border">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                        已完成的專案
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="demo-card-wide mdl-card mdl-shadow--2dp w-100">
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text">Welcome</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
+                                </div>
+                                <div class="mdl-card__actions mdl-card--border">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                        已完成的專案
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <input type="text" placeholder="請輸入標題" v-model="firebaseData.msg">
+                            <br>
+                            <textarea name="" id="" cols="30" rows="10" v-model="firebaseData.content"></textarea>
+                            <br>
+                            <button type="primary" @click="postFirebase()">傳送到 firebase</button>
+
+                            <ul>
+                                <li v-for="(item,i) in firebaseData.list">
+                                    {{item.message}}
+                                    <button @click="deleteFirebase(i)">移除項目</button>
+                                </li>
+                            </ul>
+
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">標籤</th>
+                                        <th>專案名稱</th>
+                                        <th>單號</th>
+                                        <th>功能項目</th>
+                                        <th>子項目</th>
+                                        <th>問題描述</th>
+                                        <th>負責工程師</th>
+                                        <th>處理日期</th>
+                                        <th>交付期限</th>
+                                        <th>更新日期</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="item in firebaseData.list">
+                                        <td></td>
+                                        <td data-th="專案">{{item.message}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <button type="button" class="mdl-button show-modal" @click="showModal">Show Modal</button>
+                            <dialog ref="mdl_dialog" class="mdl-dialog">
+                                <div class="mdl-dialog__content">
+                                    <p>
+                                        Allow this site to collect usage data to improve your experience?
+                                    </p>
+                                </div>
+                                <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                                    <button type="button" class="mdl-button" @click="closeModal()">Disagree</button>
+                                </div>
+                            </dialog>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+
+        <!-- #app end ~ -->
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-
-
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <!-- 樣式 Material -->
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
@@ -104,66 +232,38 @@
                 }
             },
             methods: {
-                // 取得資料
-
+                // get firebase 取得
                 getFirebase: function () {
-
-                    // const dbRefObject = firebase
-                    //     .database()
-                    //     .ref()
-                    //     .child("object")
-                    // // 只有一個 child
-                    // dbRefObject.on("value", snap => {
-                    //     // console.log(JSON.stringify(snap.val(), null, 3));
-                    //     this.firebaseData.preObject = JSON.stringify(snap.val(), null, 3);
-                    // });
-                    // // 清單
-                    // const dbRefList = dbRefObject.child("text");
-                    // dbRefList.on("child_added", snap => {
-                    //     console.log(this.firebaseData.content)
-                    // });
                     const firebaseRef = firebase.database().ref('/messages/')
                     firebaseRef.on('value', snapshot => {
-                        // 物件轉陣列方法一
-                        // console.log(snapshot)
+                        const array = []
                         snapshot.forEach(x => {
                             const item = x.val();
                             item.key = x.key
                             // console.log(item)
-                            this.firebaseData.list.push(item)
+                            array.push(item)
                         })
+                        return this.firebaseData.list = array
                     })
-
                 },
-                // 寫資料進 firebase
-                writeFirebase: function () { // 存取資料夾
-                    // var ref = firebase.database().ref('/posts/' + postId)
-                    // 設定資料
-                    // rer.set()
-                    // 新增資料
-                    // ref.push()
-                    // 只取一次資料
-                    // ref.once('value').then(function (snapshot) {
-                    //     console.log(snapshot.val())
-                    // })
-                    // Socket 取得資料 (每次更新都會觸發)
-                    // ref.on('value', function(snapshot){
-                    //     console.log(snapshot.val())
-                    // })
+                // post firebase 儲存
+                postFirebase: function () {
 
-                    // firebaseRef.child('Heading').set(this.firebaseData.projectName)
+                    // 存取資料庫
                     const firebaseRef = firebase.database().ref('/messages')
                     firebaseRef.push({
-                        message: this.firebaseData.msg
+                        message: this.firebaseData.msg,
+                        content: '12312323'
                     })
-                    // 更新
-                    // firebaseRef.child('message').set(this.firebaseData.msg)
+                    this.firebaseData.msg = ''
                 },
-                // 移除資料
-                removeFirebase: function (i) {
-                    // this.firebaseData.list.splice(this.firebaseData.list.indexOf(i), 1)
+                // put firebase 修改
+                putFirebase: function () {
+                    firebaseRef.child('message').set(this.firebaseData.msg)
+                },
+                // delete firebase移除資料
+                deleteFirebase: function (i) {
                     const firebaseRef = firebase.database().ref('/messages/')
-                    // console.log(this.firebaseData.list)
                     firebaseRef.child(this.firebaseData.list[i].key).remove()
                 },
                 showModal: function () {
